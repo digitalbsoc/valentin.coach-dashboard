@@ -356,7 +356,7 @@ const MONTHS_FR=["janv.","févr.","mars","avr.","mai","juin","juil.","août","se
 /* Data loading */
 async function loadData(){
   if(!CONFIG.useLiveData) return SAMPLE_DATA.slice();
-  const url=`https://docs.google.com/spreadsheets/d/${CONFIG.spreadsheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(CONFIG.sheetName)}`;
+  const url=`https://docs.google.com/spreadsheets/d/${CONFIG.spreadsheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(CONFIG.sheetName)}&headers=1`;
   const txt=await(await fetch(url)).text();
   const json=JSON.parse(txt.substring(txt.indexOf("{"),txt.lastIndexOf("}")+1));
   const cols=json.table.cols.map(c=>(c.label||"").trim());
